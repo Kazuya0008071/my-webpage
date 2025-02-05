@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support end decision @D</title>
+    <title>Support End Check @D</title>
 </head>
 <body>
-    <h1>Support end decision @D</h1>
-    <label for="inputNumber">SN入力:</label>
+    <h1>Support End Check @D</h1>
+    <label for="inputNumber">Enter an SN:</label>
     <input type="text" id="inputNumber" maxlength="8" pattern="\d{8}">
-    <button onclick="checkNumber()">判定</button>
+    <button onclick="checkNumber()">check</button>
     <p id="result"></p>
 
     <script>
@@ -18,7 +18,7 @@
             const number = parseInt(inputNumber, 10);
 
             if (isNaN(number) || inputNumber.length !== 8) {
-                document.getElementById('result').textContent = 'SN入力';
+                document.getElementById('result').textContent = 'Enter an SN';
                 return;
             }
 
