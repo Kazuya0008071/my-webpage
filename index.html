@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数字判定</title>
+</head>
+<body>
+    <h1>8桁の数字判定</h1>
+    <label for="inputNumber">数字を入力してください:</label>
+    <input type="text" id="inputNumber" maxlength="8" pattern="\d{8}">
+    <button onclick="checkNumber()">判定</button>
+    <p id="result"></p>
+
+    <script>
+        function checkNumber() {
+            const inputNumber = document.getElementById('inputNumber').value;
+            const validNumbers = ['12345678', '23456789', '98765432']; // 該当する数字をここに追加
+
+            if (inputNumber.length === 8 && !isNaN(inputNumber)) {
+                if (validNumbers.includes(inputNumber)) {
+                    document.getElementById('result').textContent = '該当';
+                } else {
+                    document.getElementById('result').textContent = '非該当';
+                }
+            } else {
+                document.getElementById('result').textContent = '8桁の数字を入力してください';
+            }
+        }
+    </script>
+</body>
+</html>
