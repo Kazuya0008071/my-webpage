@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>数字判定</title>
+    <title>Support end decision @D</title>
 </head>
 <body>
-    <h1>8桁の数字判定</h1>
-    <label for="inputNumber">数字を入力してください:</label>
+    <h1>Support end decision @D</h1>
+    <label for="inputNumber">SNを入力:</label>
     <input type="text" id="inputNumber" maxlength="8" pattern="\d{8}">
     <button onclick="checkNumber()">判定</button>
     <p id="result"></p>
@@ -15,17 +15,27 @@
     <script>
         function checkNumber() {
             const inputNumber = document.getElementById('inputNumber').value;
-            const validNumbers = ['12345678', '23456789', '98765432']; // 該当する数字をここに追加
 
-            if (inputNumber.length === 8 && !isNaN(inputNumber)) {
-                if (validNumbers.includes(inputNumber)) {
-                    document.getElementById('result').textContent = '該当';
-                } else {
-                    document.getElementById('result').textContent = '非該当';
+            // 該当する8桁の数字をそれぞれのカテゴリに分類
+            const categories = {
+                'AA': ['11111111', '11223344', '12345678'],
+                'BB': ['33333333', '33445566', '34567890'],
+                'CC': ['44444444', '44556677', '45678901'],
+                'DD': ['66666666', '66778899', '56789012'],
+                'EE': ['88888888', '88990011', '67890123']
+            };
+
+            let resultText = '非該当';
+
+            // 各カテゴリをチェックして該当するものを探す
+            for (const [category, numbers] of Object.entries(categories)) {
+                if (numbers.includes(inputNumber)) {
+                    resultText = category;
+                    break;
                 }
-            } else {
-                document.getElementById('result').textContent = '8桁の数字を入力してください';
             }
+
+            document.getElementById('result').textContent = resultText;
         }
     </script>
 </body>
